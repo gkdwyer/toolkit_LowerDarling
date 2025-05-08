@@ -1,0 +1,153 @@
+scenario,gauge,planningUnit,state,sWSDLName,ewrCode,multigauge,eventYears,frequency,targetFrequency,achievementCount,achievementPerYear,eventCount,eventCountAll,eventsPerYear,eventsPerYearAll,averageEventLength,thresholdDays,maxInterEventYears,noDataDays,totalDays
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,BF1_a,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,BF1_b,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,BK1_P,,0.0,0,65,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,BK1_S,,0.0,0,65,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,LF1,,0.0,0,70,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,LF2,,0.0,0,80,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,OB1_P,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,OB1_S,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,OB2,,0.0,0,40,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,OB3,,0.0,0,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,7,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,OB4,,0.0,0,15,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,OB5,,0.0,0,10,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,11,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,SF1,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,SF2_P,,0.0,0,75,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,SF2_S,,0.0,0,75,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,0.0,1925.0
+hydrographs_LowerDarling,414203,Murray River - Lock 15 weir pool to Lock 10,NSW,Lower Darling,VF,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF1a,,4.0,67,100,4.0,0.6666666666666666,4.0,8.0,0.6666666666666666,1.3333333333333333,122.875,983.0,0.010959,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF1b,,3.0,43,100,3.0,0.42857142857142855,3.0,9.0,0.42857142857142855,1.2857142857142858,70.77777777777777,637.0,0.082192,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF2a,,3.0,43,75,3.0,0.42857142857142855,3.0,7.0,0.42857142857142855,1.0,103.85714285714286,727.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF2b,,3.0,50,75,3.0,0.5,3.0,6.0,0.5,1.0,48.666666666666664,292.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF2c,,2.0,33,75,2.0,0.3333333333333333,2.0,6.0,0.3333333333333333,1.0,48.333333333333336,290.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BK1_S,,2.0,33,65,3.0,0.5,3.0,3.0,0.5,0.5,135.66666666666666,407.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BK1a_P,,1.0,17,65,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,92.0,92.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BK1b_P,,2.0,33,65,2.0,0.3333333333333333,2.0,3.0,0.3333333333333333,0.5,48.0,144.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,CF,,1.0,14,10,1.0,0.14285714285714285,1.0,6.0,0.14285714285714285,0.8571428571428571,21.333333333333332,128.0,0,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF1_P,,2.0,33,40,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,107.0,214.0,4,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF1_S,,2.0,33,40,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,240.5,481.0,4,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF2_P,,2.0,33,75,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,133.5,267.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF2_S,,2.0,33,75,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,240.5,481.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF3_P,,2.0,33,75,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,87.0,174.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF3_S,,2.0,33,75,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,240.5,481.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,NestS1,,1.0,17,100,1.0,0.16666666666666666,1.0,5.0,0.16666666666666666,0.8333333333333334,39.8,199.0,1,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB1_P,,1.0,17,50,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,122.0,122.0,3,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB1_S,,2.0,33,50,3.0,0.5,3.0,3.0,0.5,0.5,126.66666666666667,380.0,3,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB2,,2.0,33,50,3.0,0.5,3.0,3.0,0.5,0.5,112.0,336.0,4,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB3,,1.0,17,20,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,177.0,177.0,10,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB4,,1.0,17,10,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,110.0,110.0,12,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB5,,1.0,17,10,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,17.0,17.0,14,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,SF1,,2.0,33,75,2.0,0.3333333333333333,2.0,3.0,0.3333333333333333,0.5,57.333333333333336,172.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,SF2,,2.0,33,30,2.0,0.3333333333333333,2.0,3.0,0.3333333333333333,0.5,69.33333333333333,208.0,5,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,SF3,,2.0,33,75,2.0,0.3333333333333333,2.0,4.0,0.3333333333333333,0.6666666666666666,78.5,314.0,2,0.0,1925.0
+hydrographs_LowerDarling,425007,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,VF,,0.0,0,100,0.0,0.0,0.0,11.0,0.0,1.5714285714285714,72.18181818181819,794.0,0.109589,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,BF1_a,,1.0,17,50,1.0,0.16666666666666666,1.0,9.0,0.16666666666666666,1.5,81.33333333333333,732.0,1,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,BF1_b,,3.0,50,100,3.0,0.5,3.0,9.0,0.5,1.5,81.33333333333333,732.0,1,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,BK1_P,,2.0,33,70,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,117.0,234.0,3,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,BK1_S,,2.0,33,70,2.0,0.3333333333333333,2.0,3.0,0.3333333333333333,0.5,92.0,276.0,3,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,LF1,,3.0,50,90,4.0,0.6666666666666666,4.0,6.0,0.6666666666666666,1.0,80.16666666666667,481.0,2,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,LF2,,3.0,50,50,3.0,0.5,3.0,6.0,0.5,1.0,82.33333333333333,494.0,3,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,OB1_P,,1.0,17,50,1.0,0.16666666666666666,1.0,2.0,0.16666666666666666,0.3333333333333333,78.0,156.0,4,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,OB1_S,,1.0,17,50,1.0,0.16666666666666666,1.0,2.0,0.16666666666666666,0.3333333333333333,78.0,156.0,4,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,OB2,,1.0,17,40,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,111.0,111.0,5,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,OB3,,1.0,17,30,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,97.0,97.0,7,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,OB4,,1.0,17,15,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,74.0,74.0,10,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,SF1,,3.0,50,100,3.0,0.5,3.0,6.0,0.5,1.0,54.0,324.0,1,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,SF2,,4.0,67,90,6.0,1.0,6.0,7.0,1.0,1.1666666666666667,84.57142857142857,592.0,2,0.0,1925.0
+hydrographs_LowerDarling,425010,Murray River - Lock 10 to Lock 9,NSW,Lower Darling,VF,,4.0,67,100,4.0,0.6666666666666666,4.0,14.0,0.6666666666666666,2.3333333333333335,136.28571428571428,1908.0,0,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF1a,,2.0,33,100,2.0,0.3333333333333333,2.0,7.0,0.3333333333333333,1.1666666666666667,127.71428571428571,894.0,0.010959,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF1b,,3.0,43,100,3.0,0.42857142857142855,3.0,7.0,0.42857142857142855,1.0,87.71428571428571,614.0,0.082192,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF2a,,2.0,29,75,2.0,0.2857142857142857,2.0,9.0,0.2857142857142857,1.2857142857142858,69.44444444444444,625.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF2b,,3.0,50,75,3.0,0.5,3.0,7.0,0.5,1.1666666666666667,41.142857142857146,288.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BF2c,,1.0,17,75,1.0,0.16666666666666666,1.0,6.0,0.16666666666666666,1.0,28.833333333333332,173.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BK1_S,,2.0,33,65,3.0,0.5,3.0,3.0,0.5,0.5,95.66666666666667,287.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BK1a_P,,1.0,17,65,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,92.0,92.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BK1b_P,,1.0,17,65,1.0,0.16666666666666666,1.0,2.0,0.16666666666666666,0.3333333333333333,28.0,56.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BK2_P,,2.0,33,25,3.0,0.5,3.0,3.0,0.5,0.5,72.66666666666667,218.0,4,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,BK2_S,,2.0,33,25,3.0,0.5,3.0,3.0,0.5,0.5,93.0,279.0,4,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,CF,,0.0,0,10,0.0,0.0,0.0,1.0,0.0,0.14285714285714285,7.0,7.0,0,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF1_P,,1.0,17,40,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,60.5,121.0,4,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF1_S,,2.0,33,40,3.0,0.5,3.0,3.0,0.5,0.5,108.0,324.0,4,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF2_P,,1.0,17,75,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,59.0,118.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF2_S,,2.0,33,75,3.0,0.5,3.0,3.0,0.5,0.5,108.0,324.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF3_P,,2.0,33,75,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,70.5,141.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,LF3_S,,2.0,33,75,3.0,0.5,3.0,3.0,0.5,0.5,108.0,324.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,NestS1,,1.0,17,100,1.0,0.16666666666666666,1.0,12.0,0.16666666666666666,2.0,11.75,141.0,1,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB1_P,,1.0,17,50,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,114.0,114.0,3,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB1_S,,2.0,33,50,3.0,0.5,3.0,3.0,0.5,0.5,85.0,255.0,3,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB2,,2.0,33,50,3.0,0.5,3.0,3.0,0.5,0.5,79.0,237.0,4,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB3,,1.0,17,20,1.0,0.16666666666666666,1.0,2.0,0.16666666666666666,0.3333333333333333,86.5,173.0,10,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB4,,0.0,0,10,0.0,0.0,0.0,1.0,0.0,0.16666666666666666,19.0,19.0,12,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,OB5,,0.0,0,10,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,14,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,SF1,,3.0,50,75,3.0,0.5,3.0,5.0,0.5,0.8333333333333334,30.4,152.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,SF2,,2.0,33,30,2.0,0.3333333333333333,2.0,3.0,0.3333333333333333,0.5,71.33333333333333,214.0,5,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,SF3,,3.0,50,75,3.0,0.5,3.0,3.0,0.5,0.5,67.66666666666667,203.0,2,0.0,1925.0
+hydrographs_LowerDarling,425012,Lower Darling River - Weir 32 to downstream Burtundy,NSW,Lower Darling,VF,,0.0,0,100,0.0,0.0,0.0,5.0,0.0,0.7142857142857143,183.0,915.0,0.109589,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,ALT-CTF,,4.0,67,75,4.0,0.6666666666666666,4.0,5.0,0.6666666666666666,0.8333333333333334,156.8,784.0,1,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,BK1,,2.0,33,25,3.0,0.5,3.0,3.0,0.5,0.5,116.66666666666667,350.0,7,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,CF_b,,1.0,17,5,1.0,0.16666666666666666,1.0,3.0,0.16666666666666666,0.5,261.3333333333333,784.0,1,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,LF1_P,,2.0,33,25,3.0,0.5,3.0,7.0,0.5,1.1666666666666667,61.285714285714285,429.0,5,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,LF1_S,,2.0,33,25,3.0,0.5,3.0,8.0,0.5,1.3333333333333333,61.5,492.0,5,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,LF2,,2.0,33,40,3.0,0.5,3.0,8.0,0.5,1.3333333333333333,61.5,492.0,7,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,OB1,,1.0,17,20,1.0,0.16666666666666666,1.0,2.0,0.16666666666666666,0.3333333333333333,125.5,251.0,7,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,OB2,,1.0,17,15,1.0,0.16666666666666666,1.0,2.0,0.16666666666666666,0.3333333333333333,52.5,105.0,10,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,OB3,,1.0,17,10,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,34.0,34.0,14,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,SF1_P,,4.0,67,65,4.0,0.6666666666666666,4.0,4.0,0.6666666666666666,0.6666666666666666,226.5,906.0,2,0.0,1925.0
+hydrographs_LowerDarling,425013,Darling Anabranch,NSW,Lower Darling,SF1_S,,4.0,67,65,5.0,0.8333333333333334,5.0,6.0,0.8333333333333334,1.0,174.16666666666666,1045.0,2,0.0,1925.0
+hydrographs_LowerDarling,425019,Redbank and Tandou creeks,NSW,Lower Darling,ALT-CTF,,2.0,33,75,2.0,0.3333333333333333,2.0,6.0,0.3333333333333333,1.0,135.33333333333334,812.0,1,0.0,1925.0
+hydrographs_LowerDarling,425019,Redbank and Tandou creeks,NSW,Lower Darling,BK1,,2.0,33,10,4.0,0.6666666666666666,4.0,4.0,0.6666666666666666,0.6666666666666666,89.75,359.0,5,0.0,1925.0
+hydrographs_LowerDarling,425019,Redbank and Tandou creeks,NSW,Lower Darling,CF_b,,0.0,0,5,0.0,0.0,0.0,4.0,0.0,0.6666666666666666,203.0,812.0,1,0.0,1925.0
+hydrographs_LowerDarling,425019,Redbank and Tandou creeks,NSW,Lower Darling,LF2,,2.0,33,40,3.0,0.5,3.0,4.0,0.5,0.6666666666666666,104.75,419.0,4,0.0,1925.0
+hydrographs_LowerDarling,425020,Lake Wetherall,NSW,Lower Darling,HLLF,,2.0,33,40,4.0,0.6666666666666666,4.0,4.0,0.6666666666666666,0.6666666666666666,43.5,174.0,4,0.0,1925.0
+hydrographs_LowerDarling,425020,Lake Wetherall,NSW,Lower Darling,LLLF,,4.0,67,90,5.0,0.8333333333333334,5.0,5.0,0.8333333333333334,0.8333333333333334,1143.0,5715.0,0.39726,0.0,1925.0
+hydrographs_LowerDarling,425020,Lake Wetherall,NSW,Lower Darling,MLLF,,6.0,100,75,15.0,2.5,15.0,15.0,2.5,2.5,82.73333333333333,1241.0,4,0.0,1925.0
+hydrographs_LowerDarling,425022,Menindee Lakes,NSW,Lower Darling,HLLF,,1.0,17,15,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,413.0,413.0,8,0.0,1925.0
+hydrographs_LowerDarling,425022,Menindee Lakes,NSW,Lower Darling,LLLF,,4.0,67,70,4.0,0.6666666666666666,4.0,4.0,0.6666666666666666,0.6666666666666666,906.5,3626.0,2,0.0,1925.0
+hydrographs_LowerDarling,425022,Menindee Lakes,NSW,Lower Darling,MLLF,,4.0,67,40,4.0,0.6666666666666666,4.0,4.0,0.6666666666666666,0.6666666666666666,903.0,3612.0,4,0.0,1925.0
+hydrographs_LowerDarling,425022,Menindee Lakes,NSW,Lower Darling,VHLL,,1.0,17,10,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,325.0,325.0,10,0.0,1925.0
+hydrographs_LowerDarling,425023,Menindee Lakes,NSW,Lower Darling,HLLF,,2.0,33,15,2.0,0.3333333333333333,2.0,2.0,0.3333333333333333,0.3333333333333333,521.5,1043.0,8,0.0,1925.0
+hydrographs_LowerDarling,425023,Menindee Lakes,NSW,Lower Darling,LLLF,,4.0,67,70,4.0,0.6666666666666666,4.0,4.0,0.6666666666666666,0.6666666666666666,920.25,3681.0,7,0.0,1925.0
+hydrographs_LowerDarling,425023,Menindee Lakes,NSW,Lower Darling,MLLF,,4.0,67,40,4.0,0.6666666666666666,4.0,4.0,0.6666666666666666,0.6666666666666666,913.25,3653.0,7,0.0,1925.0
+hydrographs_LowerDarling,425023,Menindee Lakes,NSW,Lower Darling,VHLL,,1.0,17,10,1.0,0.16666666666666666,1.0,1.0,0.16666666666666666,0.16666666666666666,319.0,319.0,10,0.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,BF1_a,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,BF1_b,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,BK1_P,,0.0,0,70,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,BK1_S,,0.0,0,70,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,LF1,,0.0,0,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,LF2,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB1_P,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB1_S,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB2,,0.0,0,40,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB3,,0.0,0,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,7,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB4,,0.0,0,15,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,SF1,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,SF2,,0.0,0,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,10.0,1925.0
+hydrographs_LowerDarling,A4260505,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,VF,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,10.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,BF1_a,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,BF1_b,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,BK1_P,,0.0,0,70,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,BK1_S,,0.0,0,70,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,LF1,,0.0,0,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,LF2,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB1_P,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB1_S,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB2,,0.0,0,40,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB3,,0.0,0,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,7,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,OB4,,0.0,0,15,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,SF1,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,SF2,,0.0,0,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,1755.0,1925.0
+hydrographs_LowerDarling,A4260507,Murray River - Lock 9 to Lock 7,NSW,Lower Darling,VF,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,1755.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,BF1_a,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,BF1_b,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,BK1_P,,0.0,0,70,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,BK1_S,,0.0,0,70,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,LF1,,0.0,0,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,LF2,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,3,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,OB1_P,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,OB1_S,,0.0,0,50,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,4,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,OB2,,0.0,0,40,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,5,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,OB3,,0.0,0,30,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,7,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,OB4,,0.0,0,15,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,10,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,SF1,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,1,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,SF2,,0.0,0,90,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,2,10.0,1925.0
+hydrographs_LowerDarling,A4260509,Murray River - Lock 7 to SA border,NSW,Lower Darling,VF,,0.0,0,100,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0.0,0,10.0,1925.0

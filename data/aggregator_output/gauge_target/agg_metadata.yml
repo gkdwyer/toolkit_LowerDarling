@@ -1,0 +1,42 @@
+output_parent_dir: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data
+hydro_dir: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data/hydrographs
+ewr_results: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data/module_output/EWR
+model_format: Standard time-series
+outputType:
+- summary
+- yearly
+returnType: none
+ewr_finish_time: 2025-05-08 14:29:23 AEST
+ewr_status: yes
+ewr_version: py-ewr 2.3.7
+ewr_git_commit: c87c5fc904c94219c8624327746f7c20e0812705
+aggregation:
+  datpath: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data/module_output/EWR
+  type: achievement
+  groupers:
+  - scenario
+  - SWSDLName
+  - planning_unit_name
+  - gauge
+  group_until: {}
+  pseudo_spatial: ~
+  aggCols: ewr_achieved
+  aggsequence:
+    all_time: all_time
+    env_obj:
+    - ewr_code_timing
+    - env_obj
+    Target:
+    - env_obj
+    - Target
+  funsequence:
+    all_time: ArithmeticMean
+    env_obj: ArithmeticMean
+    Target: ArithmeticMean
+  namehistory: no
+  keepAllPolys: no
+  auto_ewr_PU: no
+  returnList: yes
+  finish_time: 2025-05-08 16:16:31 AEST
+  status: yes
+  HydroBOT_version: 0.2.4.9002
