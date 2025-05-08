@@ -69,6 +69,8 @@ agg_results <- file.path(project_dir, 'data', 'aggregator_output')
 # EDIT CAUSAL NETWORKS
 ```{r}
 
+
+
 # sdl_units_geodrop <- sdl_units |>
 #   st_drop_geometry()
 # 
@@ -188,38 +190,6 @@ returnType <- list('none') # list('summary', 'yearly')
 There are *many* ways to specify, these are simple.
 
 ```{r}
-sdl_units$sWSDLName <- sdl_units$SWSDLName
-```
-
-
-```{r}
-
-aggseq_1 <- list(all_time = 'all_time',
-               #ewr_code = c('ewr_code_timing', 'ewr_code'), commented out see if this works
-                    #planning_unit = planning_units,
-               sWSDLName = sdl_units,
-                    
-               env_obj =  c('ewr_code_timing', "env_obj"),
-                    #Specific_goal = c('env_obj', "Specific_goal"),
-               Target = c('env_obj', 'Target'),
-               
-               mdb = basin#,
-               #target_5_year_2024 = c('Target', 'target_5_year_2024')
-               )
-
-
-funseq_1 <- list('ArithmeticMean', 
-               #'ArithmeticMean',
-                    #'ArithmeticMean',
-               'ArithmeticMean', # Was 'SpatialWeightedMean' in gap
-                    #'ArithmeticMean',
-               'ArithmeticMean',
-                    #'ArithmeticMean',
-               'ArithmeticMean',
-               
-               'SpatialWeightedMean'#,
-               #'ArithmeticMean'
-               )
 
 #Gauge scale
 aggseq_2 <- list(all_time = 'all_time',
@@ -288,7 +258,11 @@ ewr_out <- prep_run_save_ewrs(hydro_dir = file.path(hydro_dir),
 ```{r}
 yearly <- read.csv(file.path(ewr_results, "module_output", "EWR", "hydrographs_LowerDarling_20250408", "yearly.csv"))
 
+clean_yearly(yearly)
+cleanewrs(yearly)
 head(yearly)
+
+
 
 ```
 
@@ -304,6 +278,43 @@ Here, unlike the EWR tool, we will just return these to the active R session ins
 -   Produces a list, with each sheet a step in the aggregation
 
 ```{r}
+
+#Have tried:
+#s_w_s_d_l_name
+#SWSDLName
+#sWSDLName
+#SWSDLID
+
+sdl_units$sWSDLName <- sdl_units$SWSDLName
+sdl_units$s_w_s_d_l_name <- sdl_units$SWSDLName
+
+aggseq_1 <- list(all_time = 'all_time',
+               #ewr_code = c('ewr_code_timing', 'ewr_code'), commented out see if this works
+               #planning_unit = planning_units,
+               SWSDLName = sdl_units,
+                    
+               env_obj =  c('ewr_code_timing', "env_obj"),
+                    #Specific_goal = c('env_obj', "Specific_goal"),
+               Target = c('env_obj', 'Target'),
+               
+               mdb = basin#,
+               #target_5_year_2024 = c('Target', 'target_5_year_2024')
+               )
+
+
+funseq_1 <- list('ArithmeticMean', 
+               #'ArithmeticMean',
+                    #'ArithmeticMean',
+               'ArithmeticMean', # Was 'SpatialWeightedMean' in gap
+                    #'ArithmeticMean',
+               'ArithmeticMean',
+                    #'ArithmeticMean',
+               'ArithmeticMean',
+               
+               'SpatialWeightedMean'#,
+               #'ArithmeticMean'
+               )
+
 agged_data_1 <- read_and_agg(datpath = file.path(project_dir, "data", "module_output", "EWR"),
            type = 'achievement',
            geopath = bom_basin_gauges,
