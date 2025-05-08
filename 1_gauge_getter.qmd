@@ -1,0 +1,250 @@
+---
+title: "Simple toolkit template"
+echo: true
+---
+
+## Getting started
+
+There are many options for each of the steps here, this is a minimal, quick example designed to get you something that works quickly and can be modified. *In particular, we would expect the aggregation sequences and figures to need to be tailored for each analysis.*
+
+See (in development) [documentation website](https://mdbauth.github.io/WERP_toolkit_demo/) for more detailed examples and discussion of capabilities.
+
+Each step saves metadata about its parameters, which can be used for parameter-based runs to replicate, as well as variables to use in plots.
+
+```{r setup}
+#| include: false 
+#| #| warning: false 
+#| #| message: false
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file(), cache.lazy = FALSE, warning = FALSE, message = FALSE)
+
+```
+
+### Load libraries
+
+```{r}
+#| message: false
+library(HydroBOT)
+library(sf)
+library(dplyr)
+library(ggplot2)
+library(tidyverse)
+#devtools::install_github("galenholt/hydrogauge")
+library(hydrogauge)
+```
+
+
+## User arguments
+
+As a user, we need to set
+
+-   Paths to input
+
+-   Paths to save output
+
+-   Module arguments (minimal)
+
+-   Aggregation sequence and functions
+
+-   Figures (typically interactive)
+
+## Paths
+
+```{r}
+# Outer directory for project data
+project_dir = getwd()
+
+# Hydrographs (expected to exist already)
+hydro_dir = file.path(project_dir, 'data', 'hydrographs')
+
+# Generated data
+EWR_subdir <- 'LowerDarling'
+
+# EWR outputs (created here automatically in controller, need to read from here to aggregate)
+ewr_results <- file.path(project_dir, 'data', 'module_output', 'EWR', EWR_subdir)
+
+# outputs of aggregator. There may be multiple modules
+agg_results <- file.path(project_dir, 'data', 'aggregator_output')
+```
+
+## FUNCTIONS
+```{r}
+make_ewrformat <- function(x) {
+  x <- x |> 
+    dplyr::mutate(gauge = dplyr::case_when(
+      grepl('ml/d', units, ignore.case = TRUE) ~ paste0(gauge, '_flow'),
+      units %in% c('m', 'Res. Level AHD', 'Metres') ~ paste0(gauge, '_level'),
+      .default = paste0(gauge, '_FAIL'))
+      ) |> 
+    dplyr::select(Date = time, gauge, value) |> 
+    tidyr::pivot_wider(id_cols = Date, names_from = gauge, values_from = value) |> 
+    dplyr::mutate(Date = as.Date(Date))
+  return(x)
+}
+
+# bom_simple <- purrr::map(bom_ts, make_ewrformat)
+# state_simple <- purrr::map(state_ts, make_ewrformat)
+
+```
+
+## unsing Hydrogauge
+# Gauge puller
+```{r}
+LD_gauges <- c("425013", "425020", "425007", "425012", "425022", "425023", "425010", "414203",
+               "A4260509", "A4260505", "A4260507", "425019")
+
+#NSW gauges
+ds_NSW <- get_datasources_by_site(portal = 'NSW', 
+                              site_list = LD_gauges)
+
+var_info_NSW <- get_variable_list(portal = 'NSW', 
+                              site_list = LD_gauges, 
+                              datasource = "A")
+
+ts_days_NSW <- get_ts_traces(portal = 'NSW', 
+                         site_list = LD_gauges[!LD_gauges %in% c("A4260509", "A4260505",
+                                                                 "A4260507")], #414203 better pulled from vic
+                         datasource = "A", 
+                         var_list = c("100", "130", "141"),
+                         start_time = 20200101,
+                         end_time = 20250408,
+                         interval = "day",
+                         data_type = "mean", #is mean the best to use? could use 'tot' (sums)
+                         multiplier = 1,
+                         returnformat = 'df')
+
+ts_days_NSW |> 
+  filter(!variable %in% c("100.10", "100.09"))|>
+  ggplot(aes(x = time, y = value, color = variable_short_name)) +
+  geom_line() +
+  facet_grid(variable_short_name ~ site_short_name, scales = 'free')
+
+#VIC gauges
+set2 <- LD_gauges[!LD_gauges %in% unique(ts_days_NSW$site)]
+
+var_info_VIC <- get_variable_list(portal = 'Vic', 
+                              site_list = LD_gauges, 
+                              datasource = "A")
+
+ts_days_VIC <- get_ts_traces(portal = 'Vic', 
+                         site_list = set2,
+                         datasource = "A", 
+                         var_list = c("100", "130", "141.50"),
+                         start_time = 20200101,
+                         end_time = 20250408,
+                         interval = "day",
+                         data_type = "mean", #is mean the best to use? could use 'tot' (sums)
+                         multiplier = 1,
+                         returnformat = 'df')
+
+ts_days_VIC |> 
+  filter(!variable %in% c("100.10", "100.09"))|>
+  ggplot(aes(x = time, y = value, color = variable_short_name)) +
+  geom_line() +
+  facet_grid(variable_short_name ~ site_short_name, scales = 'free')
+
+#SA gauges
+station_tslist <- getTimeseriesList(portal = 'bom', station_no = c("A4260509", "A4260505", "A4260507"))
+
+station_tslist |> 
+  dplyr::filter(grepl('DMQaQc.Merged.DailyMean.24HR', ts_name)) |> 
+  tidyr::pivot_longer(cols = c(from, to), names_to = 'startend', values_to = 'date') |> 
+ggplot(aes(y = date, x = station_no, color = parametertype_name)) +
+  geom_point(position = position_dodge(width = 0.5)) + 
+  geom_line(position = position_dodge(width = 0.5)) +
+  coord_flip()
+
+RM_ts <- getTimeseriesList(portal = 'bom',
+                           extra_list = list(station_name = 'River Murray*',
+                                             ts_name = 'DMQaQc.Merged.DailyMean.24HR'),
+                           returnfields = c('station_no', 'station_name',
+                                            'ts_name', 'ts_id', 
+                                            'ts_unitname', 'parametertype_name',
+                                            'coverage'))
+
+RM_ts <- RM_ts |>
+  filter(station_no %in% c("A4260509", "A4260505", "A4260507"))
+
+
+ts_days_SA <- getTimeseriesValues(portal = 'bom',
+                                  ts_id = unique(RM_ts$ts_id),
+                                  start_time = 20200101,
+                                  end_time = 20250408)
+
+ts_days_SA |> 
+  ggplot(aes(x = time, y = value, color = parametertype_name)) +
+  geom_line() +
+  facet_grid(parametertype_name ~ station_no, scales = 'free', labeller = label_wrap_gen(10))
+
+
+```
+
+# tidy data for EWR tool
+```{r}
+SA_simple <- purrr::map(ts_days_SA, make_ewrformat)
+NSW_simple <- purrr::map(ts_days_NSW, make_ewrformat)
+VIC_simple <- purrr::map(ts_days_NSW, make_ewrformat)
+
+#Wide format for EWR tool
+hydrographs_LowerDarling <- bind_cols(SA_simple, NSW_simple, VIC_simple) 
+
+write.csv(hydrographs_LowerDarling, file.path(project_dir, "hydrographs_LowerDarling", paste0("hydrographs_LowerDarling_20250408", ".csv")), row.names = FALSE)
+
+```
+
+
+
+```{r}
+# the way i did it before galen gave me his function.
+ts_days_NSW <- ts_days_NSW |> 
+  mutate(Date = format(as.POSIXct(time, format="%Y-%m-%d %H:%M:%S"), format= "%Y-%m-%d"))|>
+  select(-time)
+
+ts_days_VIC <- ts_days_VIC |> 
+  mutate(Date = format(as.POSIXct(time, format="%Y-%m-%d %H:%M:%S"), format= "%Y-%m-%d"))|>
+  select(-time)
+
+ts_days_SA <- ts_days_SA |>
+  mutate(site = station_no,
+         variable_short_name = parametertype_name,
+         Date = format(as.POSIXct(time, format="%Y-%m-%d %H:%M:%S"), format= "%Y-%m-%d"))|>
+  select(-time)
+
+# all variables
+ts_days <- bind_rows(ts_days_NSW, ts_days_VIC, ts_days_SA)
+
+# ts_days |>
+#   ggplot(aes(x = Date, y = value, color = variable_short_name)) +
+#   geom_line() +
+#   facet_grid(variable_short_name ~ site, scales = 'free')
+
+ts_days |>
+  dplyr::distinct(site, variable)
+
+hydrographs_LowerDarling_days <- ts_days |>
+  filter(!variable %in% c("100.10", "100.09", "100.01"))|>
+  filter(variable_short_name != "Electrical Conductivity @ 25C")|>
+  mutate(gauge = case_when(variable_short_name %in% c("Level     (Metres)", "Res. Level AHD",
+                                                      "Water Level (m)", "Water Course Level"
+                                                      ) ~ paste0(site, "_level"),
+                           variable_short_name %in% c("Discharge (ML/d)", "Water Course Discharge"
+                                                      ) ~ paste0(site, "_flow")))
+
+hydrographs_LowerDarling <- hydrographs_LowerDarling_days |>
+  select(Date, value, gauge) |>
+  pivot_wider(names_from = gauge, values_from = value)
+
+hydrographs_LowerDarling_days|>
+  ggplot(aes(x = Date, y = value, color = gauge)) +
+  geom_point() +
+  facet_wrap(gauge~., scales = 'free_y')
+
+# write.csv(hydrographs_LowerDarling, file.path(project_dir, "hydrographs_LowerDarling", paste0("hydrographs_LowerDarling_20250408", ".csv")), row.names = FALSE)
+
+```
+
+## Plot Hydrographs:
+```{r}
+
+```
+
+
