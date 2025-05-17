@@ -92,66 +92,115 @@ make_ewrformat <- function(x) {
 LD_gauges <- c("425013", "425020", "425007", "425012", "425022", "425023", "425010", "414203",
                "A4260509", "A4260505", "A4260507", "425019")
 
+NSW_gauges <- c("425013", "425020", "425007", "425012", "425022", "425023", "425010", "425019")
+
 #NSW gauges
 ds_NSW <- get_datasources_by_site(portal = 'NSW', 
-                              site_list = LD_gauges)
+                              site_list = NSW_gauges)
 
 var_info_NSW <- get_variable_list(portal = 'NSW', 
-                              site_list = LD_gauges, 
+                              site_list = NSW_gauges, 
                               datasource = "A")
 
-ts_days_NSW <- get_ts_traces(portal = 'NSW', 
-                         site_list = LD_gauges[!LD_gauges %in% c("A4260509", "A4260505",
-                                                                 "A4260507")], #414203 better pulled from vic
+#LEVEL GAUGES:
+var_info_NSW_level <- var_info_NSW |>
+  filter(variable %in% c('100.00', '130.00'))
+
+ts_days_NSW_level <- data.frame()
+
+for (i in 1:nrow(var_info_NSW_level)) {
+
+ts_days_NSW_temp <- get_ts_traces(portal = 'NSW', 
+                         site_list = var_info_NSW_level$site[i],
                          datasource = "A", 
-                         var_list = c("100", "130", "141"),
-                         start_time = 20200101,
-                         end_time = 20250408,
+                         var_list = var_info_NSW_level$variable[i],
+                         start_time =  as.numeric(format(as.Date(var_info_NSW_level$period_start[i]), format = "%Y%m%d")),
+                         end_time = as.numeric(format(as.Date(var_info_NSW_level$period_end[i]), format = "%Y%m%d")),
                          interval = "day",
                          data_type = "mean", #is mean the best to use? could use 'tot' (sums)
                          multiplier = 1,
                          returnformat = 'df')
 
-ts_days_NSW |> 
-  filter(!variable %in% c("100.10", "100.09"))|>
+ts_days_NSW_level <- bind_rows(ts_days_NSW_level, ts_days_NSW_temp)
+
+}
+
+#FLOW GAUGES:
+var_info_NSW_flow <- var_info_NSW |>
+  filter(variable %in% c('151.00'))
+
+ts_days_NSW_flow <- data.frame()
+
+for (i in 1:nrow(var_info_NSW_flow)) {
+
+ts_days_NSW_temp <- get_ts_traces(portal = 'NSW', 
+                         site_list = var_info_NSW_flow$site[i],
+                         datasource = "A", 
+                         var_list = var_info_NSW_flow$variable[i],
+                         start_time =  as.numeric(format(as.Date(var_info_NSW_flow$period_start[i]), format = "%Y%m%d")),
+                         end_time = as.numeric(format(as.Date(var_info_NSW_flow$period_end[i]), format = "%Y%m%d")),
+                         interval = "day",
+                         data_type = "mean", #doesnt matter for level for 151.00
+                         multiplier = 1,
+                         returnformat = 'df')
+
+ts_days_NSW_flow <- bind_rows(ts_days_NSW_flow, ts_days_NSW_temp)
+
+}
+
+ts_days_NSW_flow$gauge_type <-  "flow"
+ts_days_NSW_level$gauge_type <- "level"
+
+
+ts_days_NSW <- bind_rows(ts_days_NSW_flow, ts_days_NSW_level) 
+
+ts_days_NSW|> 
+  #filter(!variable %in% c("100.10", "100.09"))|>
   ggplot(aes(x = time, y = value, color = variable_short_name)) +
   geom_line() +
-  facet_grid(variable_short_name ~ site_short_name, scales = 'free')
+  facet_grid(site ~ data_type, scales = 'free')
 
+
+```
+
+
+```{r}
 #VIC gauges
-set2 <- LD_gauges[!LD_gauges %in% unique(ts_days_NSW$site)]
+VIC_gauges <-  c("414203", "414209")
 
 var_info_VIC <- get_variable_list(portal = 'Vic', 
-                              site_list = LD_gauges, 
+                              site_list = VIC_gauges, 
                               datasource = "A")
 
+var_info_VIC_level <- var_info_VIC |>
+  filter(variable %in% c('100.00', '400'))
+
 ts_days_VIC <- get_ts_traces(portal = 'Vic', 
-                         site_list = set2,
+                         site_list = VIC_gauges,
                          datasource = "A", 
-                         var_list = c("100", "130", "141.50"),
-                         start_time = 20200101,
-                         end_time = 20250408,
+                         var_list = c("100"),
+                         start_time = as.numeric(format(as.Date(min(var_info_VIC_level$period_start, na.rm = TRUE)), format = "%Y%m%d")),
+                         end_time = as.numeric(format(as.Date(max(var_info_VIC_level$period_end, na.rm = TRUE)), format = "%Y%m%d")),
                          interval = "day",
                          data_type = "mean", #is mean the best to use? could use 'tot' (sums)
                          multiplier = 1,
                          returnformat = 'df')
 
+ts_days_VIC$gauge_type <- "level"
+
 ts_days_VIC |> 
-  filter(!variable %in% c("100.10", "100.09"))|>
   ggplot(aes(x = time, y = value, color = variable_short_name)) +
   geom_line() +
-  facet_grid(variable_short_name ~ site_short_name, scales = 'free')
+  facet_grid(variable_short_name ~ site, scales = 'free')
 
+```
+
+
+```{r}
 #SA gauges
-station_tslist <- getTimeseriesList(portal = 'bom', station_no = c("A4260509", "A4260505", "A4260507"))
-
-station_tslist |> 
-  dplyr::filter(grepl('DMQaQc.Merged.DailyMean.24HR', ts_name)) |> 
-  tidyr::pivot_longer(cols = c(from, to), names_to = 'startend', values_to = 'date') |> 
-ggplot(aes(y = date, x = station_no, color = parametertype_name)) +
-  geom_point(position = position_dodge(width = 0.5)) + 
-  geom_line(position = position_dodge(width = 0.5)) +
-  coord_flip()
+station_tslist <- getTimeseriesList(portal = 'bom', station_no = c("A4260509", "A4260505", "A4260507",
+                                                                   "A4260506", "A4260501", "A4260508")) 
+                                                                    # also need last 3 gauges for some EWRs.
 
 RM_ts <- getTimeseriesList(portal = 'bom',
                            extra_list = list(station_name = 'River Murray*',
@@ -161,15 +210,36 @@ RM_ts <- getTimeseriesList(portal = 'bom',
                                             'ts_unitname', 'parametertype_name',
                                             'coverage'))
 
-RM_ts <- RM_ts |>
-  filter(station_no %in% c("A4260509", "A4260505", "A4260507"))
+RM_ts1 <- RM_ts |>
+  filter(station_no %in% c(#"A4260509", "A4260505", "A4260507",
+                           "A4260506", "A4260501", "A4260508"))
 
+ts_days_SA1 <- getTimeseriesValues(portal = 'bom',
+                                  ts_id = unique(RM_ts1$ts_id),
+                                  #start_time = 20200101,
+                                  #end_time = 20250408,
+                                  period = 'complete')
 
-ts_days_SA <- getTimeseriesValues(portal = 'bom',
-                                  ts_id = unique(RM_ts$ts_id),
-                                  start_time = 20200101,
-                                  end_time = 20250408)
+RM_ts2 <- RM_ts |>
+  filter(station_no %in% c("A4260509", "A4260505", "A4260507"))#,
+                           #"A4260506", "A4260501", "A4260508"))
 
+ts_days_SA2 <- getTimeseriesValues(portal = 'bom',
+                                  ts_id = unique(RM_ts2$ts_id),
+                                  #start_time = 20200101,
+                                  #end_time = 20250408,
+                                  period = 'complete')
+
+ts_days_SA <- bind_rows(ts_days_SA1, ts_days_SA2)
+
+ts_days_SA <- ts_days_SA |>
+  filter(parametertype_name %in% c("Water Course Level", "Water Course Discharge", "Storage Level"))|>
+  mutate(gauge_type = case_when(parametertype_name %in% c("Water Course Level", "Storage Level") ~ "level",
+                           parametertype_name %in% c("Water Course Discharge") ~ "flow"),
+         site = station_no)
+
+#"A4260509", "A4260505", "A4260507",
+#"A4260506", "A4260501", "A4260508"
 ts_days_SA |> 
   ggplot(aes(x = time, y = value, color = parametertype_name)) +
   geom_line() +
@@ -180,70 +250,71 @@ ts_days_SA |>
 
 # tidy data for EWR tool
 ```{r}
-SA_simple <- purrr::map(ts_days_SA, make_ewrformat)
-NSW_simple <- purrr::map(ts_days_NSW, make_ewrformat)
-VIC_simple <- purrr::map(ts_days_NSW, make_ewrformat)
+#Manually add euston - 414203
+X414203_colnames <-  colnames(read.csv(file.path(project_dir, "data", "old_hydrographs", "414203_historical.csv"),skip = 2))
+X414203_historical <-  read.csv(file.path(project_dir, "data", "old_hydrographs", "414203_historical.csv"),
+                                skip = 4)
+colnames(X414203_historical) <- X414203_colnames
 
-#Wide format for EWR tool
-hydrographs_LowerDarling <- bind_cols(SA_simple, NSW_simple, VIC_simple) 
+X414203_historical <- X414203_historical |>
+  mutate(time = as.POSIXct(Date, format = "%H:%M:%S %d/%m/%Y")) |> #,
+                       #"%Y/%m/%d %H:%M:%S")) |>
+  select(time, level = Water.Level..m., flow = Discharge..ML.Day.)|>
+  pivot_longer(cols = c(level, flow), names_to = "gauge_type", values_to =  "value", values_drop_na = TRUE)|>
+  mutate(site = "414203")
 
-write.csv(hydrographs_LowerDarling, file.path(project_dir, "hydrographs_LowerDarling", paste0("hydrographs_LowerDarling_20250408", ".csv")), row.names = FALSE)
+#Manually add euston - 414209
+X414209_colnames <-  colnames(read.csv(file.path(project_dir, "data", "old_hydrographs", "414209_historical.csv"),skip = 2))
+
+X414209_historical <-  read.csv(file.path(project_dir, "data", "old_hydrographs", "414209_historical.csv"),
+                                skip = 4)
+colnames(X414209_historical) <- X414209_colnames
+
+X414209_historical <- X414209_historical |>
+  mutate(time = as.POSIXct(Date, format = "%H:%M:%S %d/%m/%Y")) |> #,
+                       #"%Y/%m/%d %H:%M:%S")) |>
+  select(time, level = Water.Level..m.)|>
+  pivot_longer(cols = c(level), names_to = "gauge_type", values_to =  "value", values_drop_na = TRUE)|>
+  mutate(site = "414209")
+
+ts_days_VIC <- bind_rows(X414203_historical, X414209_historical)
 
 ```
 
 
-
 ```{r}
-# the way i did it before galen gave me his function.
-ts_days_NSW <- ts_days_NSW |> 
-  mutate(Date = format(as.POSIXct(time, format="%Y-%m-%d %H:%M:%S"), format= "%Y-%m-%d"))|>
-  select(-time)
+#long format for plotting
+hydrographs_LowerDarling_long <- bind_rows(ts_days_NSW, ts_days_VIC, ts_days_SA) |>
+  mutate(Date = as.Date(time),
+         gauge = paste(site, gauge_type, sep = "_"))
 
-ts_days_VIC <- ts_days_VIC |> 
-  mutate(Date = format(as.POSIXct(time, format="%Y-%m-%d %H:%M:%S"), format= "%Y-%m-%d"))|>
-  select(-time)
-
-ts_days_SA <- ts_days_SA |>
-  mutate(site = station_no,
-         variable_short_name = parametertype_name,
-         Date = format(as.POSIXct(time, format="%Y-%m-%d %H:%M:%S"), format= "%Y-%m-%d"))|>
-  select(-time)
-
-# all variables
-ts_days <- bind_rows(ts_days_NSW, ts_days_VIC, ts_days_SA)
-
-# ts_days |>
-#   ggplot(aes(x = Date, y = value, color = variable_short_name)) +
-#   geom_line() +
-#   facet_grid(variable_short_name ~ site, scales = 'free')
-
-ts_days |>
-  dplyr::distinct(site, variable)
-
-hydrographs_LowerDarling_days <- ts_days |>
-  filter(!variable %in% c("100.10", "100.09", "100.01"))|>
-  filter(variable_short_name != "Electrical Conductivity @ 25C")|>
-  mutate(gauge = case_when(variable_short_name %in% c("Level     (Metres)", "Res. Level AHD",
-                                                      "Water Level (m)", "Water Course Level"
-                                                      ) ~ paste0(site, "_level"),
-                           variable_short_name %in% c("Discharge (ML/d)", "Water Course Discharge"
-                                                      ) ~ paste0(site, "_flow")))
-
-hydrographs_LowerDarling <- hydrographs_LowerDarling_days |>
+#Wide format for EWR tool
+hydrographs_LowerDarling_wide <- hydrographs_LowerDarling_long |>
   select(Date, value, gauge) |>
   pivot_wider(names_from = gauge, values_from = value)
 
-hydrographs_LowerDarling_days|>
-  ggplot(aes(x = Date, y = value, color = gauge)) +
-  geom_point() +
-  facet_wrap(gauge~., scales = 'free_y')
+write.csv(hydrographs_LowerDarling_wide, file.path(project_dir, "data", "hydrographs", paste0("hydrographs_LowerDarling_20250516", ".csv")), row.names = FALSE)
 
-# write.csv(hydrographs_LowerDarling, file.path(project_dir, "hydrographs_LowerDarling", paste0("hydrographs_LowerDarling_20250408", ".csv")), row.names = FALSE)
+write.csv(get_ewr_table(), file.path(project_dir, "data", paste0("parameter_sheet_20250516", ".csv")), row.names = FALSE)
 
 ```
 
 ## Plot Hydrographs:
 ```{r}
+hydrographs_LowerDarling_long <- hydrographs_LowerDarling_long |>
+  separate(col = station_name, into = c("site_name", NA), sep = "Downstream", remove = FALSE)|>
+  mutate(site_name = ifelse(is.na(site_short_name), site_name, site_short_name))|>
+  mutate(site_name2 = ifelse(gauge_type == "flow", paste(site_name, gauge_type), site_name))
+
+
+hydrographs <- filter(hydrographs_LowerDarling_long, Date > "2024-06-30")|>
+ggplot(aes(x = Date, y = value, color = gauge_type)) +
+  geom_line() +
+  facet_wrap(site_name2 ~ ., scales = 'free_y', labeller = label_wrap_gen(10)) +
+  theme_hydrobot()
+
+ggsave(hydrographs, filename = file.path(project_dir, "data", "plots", paste0("hydrographs_LowerDarling_20250508", ".png")),
+       width = 12, height = 12)
 
 ```
 

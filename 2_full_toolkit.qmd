@@ -71,107 +71,7 @@ agg_results <- file.path(project_dir, 'data', 'aggregator_output')
 
 # EDIT CAUSAL NETWORKS
 ```{r}
-
-
-
-# sdl_units_geodrop <- sdl_units |>
-#   st_drop_geometry()
-# 
-# unique(sdl_units_geodrop$SWSDLName)
-# unique(ewr2obj$LTWPShortName)
-# unique(obj2target)
-
-ewr2obj <- HydroBOT::causal_ewr$ewr2obj
-
-#There are targets missing in here:
-obj2target <- HydroBOT::causal_ewr$obj2target
-
-#Check where env_obj is in ewr2obj but not obj2target, and vice versa
-#all_links <- left_join(ewr2obj, obj2target, by = join_by(planning_unit_name, state, LTWPShortName, env_obj, Target, SWSDLName))
-
-#THESE ARE A WORRY: i have not fixed this 08/05/25
-#env_obj is in ewr2obj but not obj2target
-unique(ewr2obj$env_obj)[!unique(ewr2obj$env_obj) %in% unique(obj2target$env_obj)]
-# "NF3.NF4" "NF4.NF5" "NV2A"    "NV4"     "NV4E"    "OS3"     "NF"      "Q-NF20"  "Q-EF4"   "F4"      "O2"      "PEF 1a" 
-# "PEF 1b"  "PEF 1c"  "PEF 3a"  "PEF 3b"  "PEF 4"   "PEF 5"   "O5"      "C1"      "F3"      "F5"      "F6"      "O1"     
-# "O3"      "O4"      NA
-# I did fix: "NF3.NF4" "NF4.NF5" "NV2A" and "NV4E" # these are just typos
-
-#env_obj is in obj2target  but not ewr2obj
-unique(obj2target$env_obj)[!unique(obj2target$env_obj) %in% unique(ewr2obj$env_obj)]
-#"OS3a"   "Q-WB4"  "Q-NV3"  "PF 2.2" "PF 2.3" "PF 1.3"
-
-#another small problem: i have not fixed this 08/05/25
-ewr2obj |>
-  filter(is.na(Target))
-#This has no env_obj or target
-
-
-# Some easy fixes:
-#PROBLEM 1: "NF3.NF4", "NF4.NF5" in the "Murray Lower Darling" these need to be split. e.g: 
-# temp <-  ewr2obj |>
-#   filter(env_obj %in% c("NF3.NF4", "NF3", "NF4", "NF4.NF5", "NF4", "NF5"))|>
-#   filter(LTWPShortName == "Murray Lower Darling") |>
-#   group_by(ewr_code_timing, planning_unit_name, gauge)|>
-#   reframe(n = n(), 
-#           env_objs = paste(env_obj, collapse = "_"))
-
-Fix1_ewr2obj <-  ewr2obj |>
-  filter(env_obj %in% c("NF3.NF4", "NF4.NF5")) |> # only in the "Murray Lower Darling"
-  separate(col = env_obj, into = paste0("env_obj", 1:2), sep = "[.]", extra = "merge")
-
-Fix1_ewr2obj <- pivot_longer(Fix1_ewr2obj, cols = env_obj1:env_obj2, names_to = "delete", values_to = "env_obj", values_drop_na = TRUE)|>
-  select(-delete)
-
-# add in fix 1:
-ewr2obj <- ewr2obj |>
-  filter(!env_obj %in% c("NF3.NF4", "NF4.NF5"))|>
-  bind_rows(Fix1_ewr2obj)
-
-#Check for cases where an env_obj maps to different targets in different catchments - these need to be unique
-temp <- obj2target |>
-  distinct(env_obj, Target) |>
-  group_by(env_obj) |>
-  mutate(n = n()) |>
-  filter(n > 1)
-
-# Problem 2:
-#"NV2A" and "NV4E" vs "NV2a" and "NV4e"
-ewr2obj <- ewr2obj |>
-  mutate(env_obj = case_when(env_obj == "NV2A" ~ "NV2a", 
-                             env_obj ==  "NV4E" ~ "NV4e", 
-                             .default = env_obj))
-
-#sort(unique(ewr2obj$env_obj))
-
-# Problem 3:
-# THESE env_obj NEED TO BE UNIQUE:
-# "P1" "F1" "1"  "2"  "3"  "4" 
-#sort(unique(obj2target$env_obj)) #which are only numbers? (didnt get this to work: mutate(only_numbers = grepl("^[A-Za-z]+$", env_obj, perl = T)))
-# These may as well be unique:
-# "1","2","2.1","2.2","2.3","2.4","3","4","5","6"
-# TOGETHER:
-make_unique <- c("1","2","2.1","2.2","2.3","2.4","3","4","5","6","P1","F1")
-
-ewr2obj <- ewr2obj |>
-  mutate(Target_short = case_when(Target == "Ecosystem function" ~ "EF", 
-                                  Target ==  "Native fish" ~ "NF", 
-                                  Target ==  "Native vegetation" ~ "NV", 
-                                  Target ==  "Waterbirds" ~ "WB", 
-                                  Target ==  "Other species" ~ "OS"))|>
-  mutate(env_obj_new = ifelse(env_obj %in% make_unique,
-                          paste(substring(SWSDLName, 1, 1), "-", Target_short, env_obj, sep = ""), 
-                          env_obj))
-
-#NEW obj2target
-#paste(names(obj2target), collapse = ", ")
-#"planning_unit_name, LTWPShortName, env_obj, Specific_goal, Objective, Target, state, SWSDLName"
-obj2target <- ewr2obj |>
-  distinct(planning_unit_name, LTWPShortName, env_obj, Target, state, SWSDLName)
-
-causal_ewr$ewr2obj <- ewr2obj
-causal_ewr$obj2target <- obj2target
-
+causal_ewr <- readRDS(file.path(ewr_results, "edited_CausalNetwork_2025-05-15.rds"))
 ```
 
 ## Module controls
@@ -193,25 +93,18 @@ returnType <- list('none') # list('summary', 'yearly')
 There are *many* ways to specify, these are simple.
 
 ```{r}
-
-#SWSDLName scale
+# Galen's good sequence:
+#it made more sense to me to get to things like NF1 and then space than OB1_a and SF1_b and then space. #Since the env_objs are mapped to the hydrology at the gauge, seemed like that was the place to go to env_obj. I'm guessing, though, that #that level of specificity might not exist in the causal networks anymore
 aggseq_1 <- list(all_time = 'all_time',
-               sdl_units = sdl_units,
+               #ewr_code = c('ewr_code_timing', 'ewr_code'), commented out see if this works
+                    #planning_unit = planning_units,
                env_obj =  c('ewr_code_timing', "env_obj"),
+                    #Specific_goal = c('env_obj', "Specific_goal"),               
+               sdl_units = sdl_units,
                Target = c('env_obj', 'Target'),
-               mdb = basin
+               mdb = basin#,
+               #target_5_year_2024 = c('Target', 'target_5_year_2024')
                )
-
-# aggseq_1 <- list(all_time = 'all_time',
-#                #ewr_code = c('ewr_code_timing', 'ewr_code'), commented out see if this works
-#                #planning_unit = planning_units,
-#                sdl_units = sdl_units,
-#                env_obj =  c('ewr_code_timing', "env_obj"),
-#                     #Specific_goal = c('env_obj', "Specific_goal"),
-#                Target = c('env_obj', 'Target'),
-#                mdb = basin#,
-#                #target_5_year_2024 = c('Target', 'target_5_year_2024')
-#                )
 
 
 funseq_1 <- list('ArithmeticMean', 
@@ -222,11 +115,12 @@ funseq_1 <- list('ArithmeticMean',
                'ArithmeticMean',
                     #'ArithmeticMean',
                'ArithmeticMean',
+               
                'SpatialWeightedMean'#,
                #'ArithmeticMean'
                )
 
-#Gauge scale
+#Gauge scale:
 aggseq_2 <- list(all_time = 'all_time',
                #ewr_code = c('ewr_code_timing', 'ewr_code'),
                #planning_unit = planning_units,
@@ -250,9 +144,6 @@ funseq_2 <- list('ArithmeticMean',
                #'ArithmeticMean'
                )
 
-aggseq_3 <- list(all_time = 'all_time')#,
-
-funseq_3 <- list('ArithmeticMean')#, 
 
 ```
 
@@ -291,7 +182,7 @@ ewr_out <- prep_run_save_ewrs(hydro_dir = file.path(hydro_dir),
 
 #have a look
 ```{r}
-yearly <- read.csv(file.path(ewr_results, "module_output", "EWR", "hydrographs_LowerDarling_20250408", "yearly.csv"))
+yearly <- read.csv(file.path(ewr_results, "module_output", "EWR", "hydrographs_LowerDarling_20250508", "yearly.csv"))
 
 ```
 
@@ -317,7 +208,7 @@ Here, unlike the EWR tool, we will just return these to the active R session ins
 # sdl_units$sWSDLName <- sdl_units$SWSDLName
 # sdl_units$s_w_s_d_l_name <- sdl_units$SWSDLName
 
-agged_data_1 <- read_and_agg(datpath = file.path(project_dir, "data", "module_output", "EWR"),
+agged_data_1 <- read_and_agg(datpath = file.path(project_dir, "data", "module_output", "EWR", "hydrographs_LowerDarling_20250516"),
            type = 'achievement',
            geopath = bom_basin_gauges,
            causalpath = causal_ewr,
@@ -331,14 +222,14 @@ agged_data_1 <- read_and_agg(datpath = file.path(project_dir, "data", "module_ou
            namehistory = FALSE,
            keepAllPolys = FALSE,
            returnList = TRUE,
-           savepath = file.path(agg_results, "sdl_target"))
+           savepath = file.path(agg_results, "basin_target"))
 
-agged_data_2 <- read_and_agg(datpath =  file.path(project_dir, "data", "module_output", "EWR"), 
+agged_data_2 <- read_and_agg(datpath =  file.path(project_dir, "data", "module_output", "EWR", "hydrographs_LowerDarling_20250516"), 
            type = 'achievement',
            geopath = bom_basin_gauges,
            causalpath = causal_ewr,
            groupers = c('scenario', 'SWSDLName', 'planning_unit_name', 'gauge'),
-           aggCols = 'ewr_achieved',
+           aggCols = c("frequency_achieved",  "interevent_achieved", 'ewr_achieved'),
            #group_until = list(SWSDLName = is_notpoint, planning_unit_name = is_notpoint, gauge = is_notpoint),
            #pseudo_spatial = 'sdl_units',
            aggsequence = aggseq_2,
@@ -349,21 +240,6 @@ agged_data_2 <- read_and_agg(datpath =  file.path(project_dir, "data", "module_o
            returnList = TRUE,
            savepath = file.path(agg_results, "gauge_target"))
 
-agged_data_3 <- read_and_agg(datpath =  file.path(project_dir, "data", "module_output", "EWR", "hydrographs_LowerDarling_20250408"), 
-           type = 'achievement',
-           geopath = bom_basin_gauges,
-           causalpath = causal_ewr,
-           groupers = 'scenario',
-           aggCols = 'ewr_achieved',
-           #group_until = list(SWSDLName = is_notpoint, planning_unit_name = is_notpoint, gauge = is_notpoint),
-           #pseudo_spatial = 'sdl_units',
-           aggsequence = aggseq_3,
-           funsequence = funseq_3,
-           saveintermediate = TRUE,
-           namehistory = FALSE,
-           keepAllPolys = FALSE,
-           returnList = TRUE,
-           savepath = file.path(agg_results, "gauge_all_time"))
 ```
 
 The new scenario names ensure uniqueness, but can be ugly. This could be avoided with a named list to the `scenarios` argument in `prep_run_save_ewrs`, but a robust, general approach is a work in progress.
