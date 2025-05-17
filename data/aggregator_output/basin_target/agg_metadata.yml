@@ -1,33 +1,33 @@
 aggregation:
   datpath: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data/module_output/EWR/hydrographs_LowerDarling_20250516
   type: achievement
-  groupers:
-  - scenario
-  - SWSDLName
-  - planning_unit_name
-  - gauge
-  group_until: {}
-  pseudo_spatial: ~
-  aggCols:
-  - frequency_achieved
-  - interevent_achieved
-  - ewr_achieved
+  groupers: scenario
+  group_until:
+    SWSDLName: 3
+    planning_unit_name: 3
+    gauge: 3
+  pseudo_spatial: sdl_units
+  aggCols: ewr_achieved
   aggsequence:
     all_time: all_time
     env_obj:
     - ewr_code_timing
     - env_obj
+    sdl_units: sdl_units
     Target:
     - env_obj
     - Target
+    mdb: mdb
   funsequence:
     all_time: ArithmeticMean
     env_obj: ArithmeticMean
+    sdl_units: ArithmeticMean
     Target: ArithmeticMean
+    mdb: SpatialWeightedMean
   namehistory: no
   keepAllPolys: no
   auto_ewr_PU: no
   returnList: yes
-  finish_time: 2025-05-16 21:13:53 AEST
+  finish_time: 2025-05-16 21:13:51 AEST
   status: yes
   HydroBOT_version: 0.2.4.9006

@@ -1,13 +1,15 @@
-output_parent_dir: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data
-hydro_dir: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data/hydrographs
-ewr_results: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data/module_output/EWR
-model_format: Standard time-series
-outputType:
-- summary
-- yearly
-returnType:
-- none
-ewr_finish_time: 2025-05-08 14:29:23 AEST
-ewr_status: yes
-ewr_version: py-ewr 2.3.7
-ewr_git_commit: c87c5fc904c94219c8624327746f7c20e0812705
+scenarios: ~
+ewr:
+  output_parent_dir: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data
+  hydro_dir: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data/hydrographs
+  output_path: C:/Users/Admin/Documents/Georgia/toolkit_LowerDarling/toolkit_LowerDarling/data/module_output/EWR
+  model_format: Standard time-series
+  outputType:
+  - summary
+  - yearly
+  returnType:
+  - none
+  finish_time: 2025-05-16 21:12:13 AEST
+  status: yes
+  ewr_version: 2.3.7
+  HydroBOT_version: 0.2.4.9006
